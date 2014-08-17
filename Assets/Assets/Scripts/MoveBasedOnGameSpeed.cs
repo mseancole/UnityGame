@@ -10,6 +10,6 @@ public class MoveBasedOnGameSpeed : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
-		transform.position += transform.rotation * direction.normalized * GameManager.instance.gameSpeed * Time.deltaTime;
+		transform.position += transform.rotation * direction.normalized * GameManager.Instance.gameSpeed * Time.deltaTime;
 	}
 }
