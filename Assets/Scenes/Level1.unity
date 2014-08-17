@@ -515,6 +515,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b78a5062f1f1de4d8c8c3f72bb46189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsPerUnitTravelled: 1
+  gameSpeed: 10
 --- !u!4 &1595119289
 Transform:
   m_ObjectHideFlags: 0
