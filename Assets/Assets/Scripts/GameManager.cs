@@ -8,11 +8,13 @@ public class GameManager : MonoBehaviour {
 
 	private float score = 0.0f;
 	private static float highScore = 0.0f;
+	private static bool saved = false;
 	private bool gameOver = false;
 
 	// Use this for initialization
 	void Start () {
 		instance = this;
+		LoadHighScore();
 	}
 	
 	// Update is called once per frame
@@ -21,16 +23,31 @@ public class GameManager : MonoBehaviour {
 			gameOver = true;
 		}
 
-		if( gameOver && Input.anyKeyDown ) {
-			Application.LoadLevel( Application.loadedLevel );
+		if( gameOver ) {
+			if( ! saved ) {
+				SaveHighScore();
+				saved = true;
+			}
+			if( Input.anyKeyDown ) {
+				Application.LoadLevel( Application.loadedLevel );
+			}
 		}
 
 		if( ! gameOver ) {
 			score += pointsPerUnitTravelled * gameSpeed * Time.deltaTime;
 			if( score > highScore ) {
 				highScore = score;
+				saved = false;
 			}
 		}
+	}
+
+	void SaveHighScore() {
+		PlayerPrefs.SetInt( "Highscore", ( int ) highScore );
+		PlayerPrefs.Save();
+	}
+	void LoadHighScore() {
+		highScore = PlayerPrefs.GetInt( "Highscore" );
 	}
 
 	void OnGUI() {
