@@ -1,4 +1,4 @@
-test
+UnityGame
 ====
 
 Testing Unity by following along with "Cooking with Unity"
